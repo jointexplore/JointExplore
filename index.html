@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop Container Manager</title>
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">DC</div><div><b>Desktop Container</b><small>MANAGER 1.0</small></div></div>
+      <button class="nav active" id="navApps">▦　应用管理</button>
+      <div class="sidebar-foot">便携版 · 共用运行核心</div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><span class="eyebrow">WORKSPACE</span><h1>应用管理</h1></div><button class="primary" id="addBtn">＋ 添加网站</button></header>
+      <section class="intro"><div><h2>你的网页桌面应用</h2><p>添加网站后，可在独立窗口中运行。所有网站共用同一个桌面容器核心。</p></div><div class="intro-icon">▣</div></section>
+      <section class="content">
+        <div class="section-head"><div><h3>已添加的应用</h3><p id="appCount">0 个应用</p></div><button class="subtle" id="refreshBtn">刷新</button></div>
+        <div id="apps" class="apps-grid"></div>
+        <div id="empty" class="empty"><div class="empty-icon">＋</div><b>还没有添加网站</b><p>点击右上角“添加网站”，创建你的第一个桌面应用。</p></div>
+      </section>
+      <footer>Desktop Container Manager <span>本地配置保存在程序目录的 data 文件夹</span></footer>
+    </main>
+  </div>
+
+  <dialog id="editor">
+    <form id="appForm">
+      <div class="dialog-head"><div><span class="eyebrow">WEB APP CONFIGURATION</span><h2 id="dialogTitle">添加网站</h2></div><button type="button" class="close" id="closeDialog">×</button></div>
+      <input type="hidden" id="appId">
+      <label>应用名称<input id="name" required maxlength="60" placeholder="例如：Innomarket"></label>
+      <label>网站地址<input id="url" required type="url" placeholder="https://example.com"></label>
+      <div class="two">
+        <label>窗口宽度<input id="width" type="number" min="480" max="3840" value="1440"></label>
+        <label>窗口高度<input id="height" type="number" min="360" max="2160" value="900"></label>
+      </div>
+      <label>图标文字（显示在管理器卡片上）<input id="iconText" maxlength="3" value="WEB" placeholder="WEB"></label>
+      <label class="check"><input id="resizable" type="checkbox" checked> 允许调整窗口大小</label>
+      <label class="check"><input id="fullscreen" type="checkbox"> 启动时全屏</label>
+      <div class="form-error" id="formError"></div>
+      <div class="dialog-actions"><button type="button" class="subtle" id="cancelBtn">取消</button><button type="submit" class="primary">保存应用</button></div>
+    </form>
+  </dialog>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
